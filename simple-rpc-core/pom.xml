@@ -11,5 +11,11 @@
 
     <artifactId>simple-rpc-core</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.test.rpc</groupId>
+            <artifactId>simple-rpc-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -5,15 +5,15 @@ package com.rpc.core.bean;
  */
 public class ServiceBean {
     private String name;
-    private Object bean;
+    private Object ref;
     private Class<?> interfaceClass;
 
-    public Object getBean() {
-        return bean;
+    public Object getRef() {
+        return ref;
     }
 
-    public void setBean(Object bean) {
-        this.bean = bean;
+    public void setRef(Object ref) {
+        this.ref = ref;
     }
 
     public Class<?> getInterfaceClass() {

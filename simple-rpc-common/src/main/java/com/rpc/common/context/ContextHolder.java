@@ -6,6 +6,8 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
+import java.util.Map;
+
 /**
  * Created by kaiwang on 2016/12/14.
  */
@@ -32,6 +34,10 @@ public class ContextHolder implements ApplicationContextAware {
 
     public static <T> T getBean(Class<T> var1) throws BeansException {
         return getApplicationContext().getBean(var1);
+    }
+
+    public static <T> Map<String, T> getBeansOfType(Class<T> type) throws BeansException {
+        return getApplicationContext().getBeansOfType(type);
     }
 
     public static boolean containsBean(String var1) {
