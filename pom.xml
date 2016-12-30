@@ -13,6 +13,8 @@
         <module>simple-rpc-demo</module>
         <module>simple-rpc-http</module>
         <module>simple-rpc-common</module>
+        <module>simple-rpc-loadbalance</module>
+        <module>simple-rpc-register</module>
     </modules>
 
     <properties>

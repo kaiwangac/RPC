@@ -1,5 +1,6 @@
 package com.rpc.core.bean;
 
+import com.rpc.core.RpcException;
 import com.rpc.core.advice.ServiceProxy;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -17,6 +18,10 @@ public class ReferenceFactoryBean implements FactoryBean, InitializingBean {
     private Object serviceProxy;
 
     public void afterPropertiesSet() throws Exception {
+        if (!interfaceClass.isInterface()) {
+            throw new IllegalArgumentException(
+                    interfaceClass.getName() + " is not an interface");
+        }
         this.serviceProxy = Proxy.newProxyInstance(ReferenceFactoryBean.class.getClassLoader(), new Class[]{interfaceClass}, new ServiceProxy(this));
     }
 
@@ -25,11 +30,11 @@ public class ReferenceFactoryBean implements FactoryBean, InitializingBean {
     }
 
     public Class<?> getObjectType() {
-        return interfaceClass;
+        return this.serviceProxy.getClass();
     }
 
     public boolean isSingleton() {
-        return false;
+        return true;
     }
 
     public Class<?> getInterfaceClass() {

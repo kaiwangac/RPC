@@ -1,5 +1,9 @@
 package com.rpc.common.chain;
 
+import com.rpc.common.chain.handler.api.Handler;
+import com.rpc.common.chain.type.HandlerChainType;
+import com.rpc.common.param.RpcParam;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -24,11 +28,18 @@ public class HandlerChainFactory {
         this.size = this.handlerChain.size();
     }
 
-    public Handler next() {
-        return this.handlerChain.get(cursor++);
+    public Object next(RpcParam rpcParam) {
+        Handler handler =  this.handlerChain.get(cursor++);
+        return handler.handle(this, rpcParam);
     }
 
     public boolean hasNext() {
         return this.cursor < this.size;
+    }
+
+    public Object start(RpcParam rpcParam) {
+        Handler handler = this.handlerChain.get(0);
+        cursor = 1;
+        return handler.handle(this, rpcParam);
     }
 }
