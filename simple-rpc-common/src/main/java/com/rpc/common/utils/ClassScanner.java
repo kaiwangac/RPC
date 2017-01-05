@@ -1,4 +1,4 @@
-package com.rpc.common.scanner;
+package com.rpc.common.utils;
 
 import java.io.File;
 import java.io.IOException;

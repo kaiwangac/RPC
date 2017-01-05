@@ -1,6 +1,4 @@
-package com.rpc.common.chain.handler;
-
-import com.rpc.common.chain.handler.api.Handler;
+package com.rpc.common.container.chain.handler;
 
 /**
  * Created by kaiwang on 2016/12/29.

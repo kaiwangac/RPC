@@ -1,6 +1,6 @@
 package com.rpc.common.config;
 
-import com.rpc.common.context.ContextHolder;
+import com.rpc.common.container.context.ContextHolder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

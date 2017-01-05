@@ -6,5 +6,6 @@ package com.rpc.core.property;
 public class ReferenceProperty {
     public static final String NAME = "name";
     public static final String SERVICE = "service";
+    public static final String PROTOCOL = "protocol";
     public static final String INTERFACE_CLASS = "interfaceClass";
 }

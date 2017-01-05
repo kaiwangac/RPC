@@ -1,6 +1,5 @@
 package com.rpc.core.bean;
 
-import com.rpc.core.RpcException;
 import com.rpc.core.advice.ServiceProxy;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -14,6 +13,7 @@ public class ReferenceFactoryBean implements FactoryBean, InitializingBean {
 
     private String name;
     private String service;
+    private String protocol;
     private Class<?> interfaceClass;
     private Object serviceProxy;
 
@@ -59,5 +59,13 @@ public class ReferenceFactoryBean implements FactoryBean, InitializingBean {
 
     public void setService(String service) {
         this.service = service;
+    }
+
+    public String getProtocol() {
+        return protocol;
+    }
+
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
     }
 }

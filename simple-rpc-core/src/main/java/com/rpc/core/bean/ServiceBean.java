@@ -5,6 +5,7 @@ package com.rpc.core.bean;
  */
 public class ServiceBean {
     private String name;
+    private String protocol;
     private Object ref;
     private Class<?> interfaceClass;
 
@@ -30,5 +31,13 @@ public class ServiceBean {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getProtocol() {
+        return protocol;
+    }
+
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
     }
 }

@@ -11,4 +11,5 @@ import java.lang.annotation.*;
 public @interface Reference {
     String name() default "";
     String service() default "";
+    String protocol() default "";
 }

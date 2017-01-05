@@ -1,8 +1,7 @@
 package com.rpc.core.advice;
 
-import com.rpc.common.chain.HandlerChainFactory;
-import com.rpc.common.chain.type.HandlerChainType;
-import com.rpc.common.param.RpcParam;
+import com.rpc.common.container.chain.HandlerChainFactory;
+import com.rpc.common.utils.param.RpcRequest;
 import com.rpc.core.RpcException;
 import com.rpc.core.bean.ReferenceFactoryBean;
 
@@ -32,12 +31,13 @@ public class ServiceProxy implements InvocationHandler {
         for (int i = 0; i < methodParameterTypes.length; i++) {
             methodParameterTypeNames[i] = methodParameterTypes[i].getTypeName();
         }
-        RpcParam rpcParam = new RpcParam();
-        rpcParam.setInterfaceName(interfaceClass.getName());
-        rpcParam.setMethodArgs(args);
-        rpcParam.setMethodName(methodName);
-        rpcParam.setMethodParameterTypeNames(methodParameterTypeNames);
-        rpcParam.setServiceName(referenceFactoryBean.getService());
-        return new HandlerChainFactory(HandlerChainType.CONSUMER).start(rpcParam);
+        RpcRequest rpcRequest = new RpcRequest();
+        rpcRequest.setInterfaceName(interfaceClass.getName());
+        rpcRequest.setMethodArgs(args);
+        rpcRequest.setMethodName(methodName);
+        rpcRequest.setMethodParameterTypeNames(methodParameterTypeNames);
+        rpcRequest.setServiceName(referenceFactoryBean.getService());
+//        return new HandlerChainFactory(HandlerChainType.CONSUMER).start(rpcRequest);
+        return null;
     }
 }

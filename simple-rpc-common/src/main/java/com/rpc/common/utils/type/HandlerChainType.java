@@ -1,4 +1,4 @@
-package com.rpc.common.chain.type;
+package com.rpc.common.utils.type;
 
 /**
  * Created by kaiwang on 2016/12/29.

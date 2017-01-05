@@ -10,4 +10,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 public @interface Service {
     String name() default "";
+    String protocol() default "";
 }

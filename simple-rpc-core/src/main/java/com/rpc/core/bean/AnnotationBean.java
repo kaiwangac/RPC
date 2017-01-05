@@ -1,6 +1,6 @@
 package com.rpc.core.bean;
 
-import com.rpc.common.scanner.ClassScanner;
+import com.rpc.common.utils.ClassScanner;
 import com.rpc.core.annotation.Reference;
 import com.rpc.core.annotation.Service;
 import com.rpc.core.property.ReferenceProperty;
@@ -73,6 +73,7 @@ public class AnnotationBean implements BeanPostProcessor, BeanFactoryPostProcess
     private void registerServiceBean(Service service, Class clazz) {
         BeanDefinitionBuilder serviceBean = BeanDefinitionBuilder.genericBeanDefinition(ServiceBean.class);
         serviceBean.addPropertyValue(ServiceProperty.NAME, service.name());
+        serviceBean.addPropertyValue(ServiceProperty.PROTOCOL, service.protocol());
         BeanDefinitionBuilder ref = BeanDefinitionBuilder.genericBeanDefinition(clazz);
         ((DefaultListableBeanFactory) beanFactory).registerBeanDefinition(clazz.getName(), ref.getBeanDefinition());
         serviceBean.addPropertyReference(ServiceProperty.REF, clazz.getName());
@@ -84,6 +85,7 @@ public class AnnotationBean implements BeanPostProcessor, BeanFactoryPostProcess
         BeanDefinitionBuilder referenceFactoryBean = BeanDefinitionBuilder.genericBeanDefinition(ReferenceFactoryBean.class);
         referenceFactoryBean.addPropertyValue(ReferenceProperty.NAME, reference.name());
         referenceFactoryBean.addPropertyReference(ReferenceProperty.SERVICE, reference.service());
+        referenceFactoryBean.addPropertyValue(ReferenceProperty.PROTOCOL, reference.protocol());
         referenceFactoryBean.addPropertyValue(ReferenceProperty.INTERFACE_CLASS, field.getType());
         ((DefaultListableBeanFactory) beanFactory).registerBeanDefinition(reference.name(), referenceFactoryBean.getBeanDefinition());
     }

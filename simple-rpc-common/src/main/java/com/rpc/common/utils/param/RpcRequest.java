@@ -1,11 +1,11 @@
-package com.rpc.common.param;
+package com.rpc.common.utils.param;
 
 import java.io.Serializable;
 
 /**
  * Created by kaiwang on 2016/12/30.
  */
-public class RpcParam implements Serializable {
+public class RpcRequest implements Serializable {
 
     private static final long serialVersionUID = -6388538413186989879L;
     private String interfaceName;
@@ -13,6 +13,7 @@ public class RpcParam implements Serializable {
     private Object[] methodArgs;
     private String[] methodParameterTypeNames;
     private String serviceName;
+    private String protocol;
 
     public String getInterfaceName() {
         return interfaceName;
@@ -52,5 +53,13 @@ public class RpcParam implements Serializable {
 
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
+    }
+
+    public String getProtocol() {
+        return protocol;
+    }
+
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
     }
 }
