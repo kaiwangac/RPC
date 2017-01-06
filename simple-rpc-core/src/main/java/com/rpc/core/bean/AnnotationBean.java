@@ -3,8 +3,8 @@ package com.rpc.core.bean;
 import com.rpc.common.utils.ClassScanner;
 import com.rpc.core.annotation.Reference;
 import com.rpc.core.annotation.Service;
-import com.rpc.core.property.ReferenceProperty;
-import com.rpc.core.property.ServiceProperty;
+import com.rpc.core.constant.ReferenceConstant;
+import com.rpc.core.constant.ServiceConstant;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -72,21 +72,21 @@ public class AnnotationBean implements BeanPostProcessor, BeanFactoryPostProcess
 
     private void registerServiceBean(Service service, Class clazz) {
         BeanDefinitionBuilder serviceBean = BeanDefinitionBuilder.genericBeanDefinition(ServiceBean.class);
-        serviceBean.addPropertyValue(ServiceProperty.NAME, service.name());
-        serviceBean.addPropertyValue(ServiceProperty.PROTOCOL, service.protocol());
+        serviceBean.addPropertyValue(ServiceConstant.NAME, service.name());
+        serviceBean.addPropertyValue(ServiceConstant.PROTOCOL, service.protocol());
         BeanDefinitionBuilder ref = BeanDefinitionBuilder.genericBeanDefinition(clazz);
         ((DefaultListableBeanFactory) beanFactory).registerBeanDefinition(clazz.getName(), ref.getBeanDefinition());
-        serviceBean.addPropertyReference(ServiceProperty.REF, clazz.getName());
-        serviceBean.addPropertyValue(ServiceProperty.INTERFACE_CLASS, clazz.getInterfaces().length == 0 ? null : clazz.getInterfaces()[0]);
+        serviceBean.addPropertyReference(ServiceConstant.REF, clazz.getName());
+        serviceBean.addPropertyValue(ServiceConstant.INTERFACE_CLASS, clazz.getInterfaces().length == 0 ? null : clazz.getInterfaces()[0]);
         ((DefaultListableBeanFactory) beanFactory).registerBeanDefinition(service.name(), serviceBean.getBeanDefinition());
     }
 
     private void registerReferenceFactoryBean(Reference reference, Field field) {
         BeanDefinitionBuilder referenceFactoryBean = BeanDefinitionBuilder.genericBeanDefinition(ReferenceFactoryBean.class);
-        referenceFactoryBean.addPropertyValue(ReferenceProperty.NAME, reference.name());
-        referenceFactoryBean.addPropertyReference(ReferenceProperty.SERVICE, reference.service());
-        referenceFactoryBean.addPropertyValue(ReferenceProperty.PROTOCOL, reference.protocol());
-        referenceFactoryBean.addPropertyValue(ReferenceProperty.INTERFACE_CLASS, field.getType());
+        referenceFactoryBean.addPropertyValue(ReferenceConstant.NAME, reference.name());
+        referenceFactoryBean.addPropertyReference(ReferenceConstant.SERVICE, reference.service());
+        referenceFactoryBean.addPropertyValue(ReferenceConstant.PROTOCOL, reference.protocol());
+        referenceFactoryBean.addPropertyValue(ReferenceConstant.INTERFACE_CLASS, field.getType());
         ((DefaultListableBeanFactory) beanFactory).registerBeanDefinition(reference.name(), referenceFactoryBean.getBeanDefinition());
     }
 }

@@ -1,9 +1,9 @@
-package com.rpc.core.property;
+package com.rpc.core.constant;
 
 /**
  * Created by kaiwang on 2016/12/30.
  */
-public class ReferenceProperty {
+public class ReferenceConstant {
     public static final String NAME = "name";
     public static final String SERVICE = "service";
     public static final String PROTOCOL = "protocol";

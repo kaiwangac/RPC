@@ -1,5 +1,7 @@
 package com.rpc.core.config;
 
+import com.rpc.core.property.RpcProperty;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -7,5 +9,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RpcConfiguration {
-
+    @Bean
+    public RpcProperty rpcProperty() {
+        return new RpcProperty();
+    }
 }
